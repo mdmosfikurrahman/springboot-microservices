@@ -1,0 +1,38 @@
+// springboot-microservices/build.gradle
+plugins {
+    id 'java'
+    id "io.spring.dependency-management" version "1.0.15.RELEASE"
+}
+
+group = 'org.epde'
+version = '0.1'
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+
+    // For subprojects, ensure they apply the dependency management plugin (the root already applies it to itself)
+    if (project != rootProject) {
+        apply plugin: 'java'
+        apply plugin: 'io.spring.dependency-management'
+    }
+
+    dependencyManagement {
+        // Import BOMs for Spring Boot and JUnit so that versions are supplied for starters and tests
+        imports {
+            mavenBom 'org.springframework.boot:spring-boot-dependencies:3.0.5'
+            mavenBom 'org.junit:junit-bom:5.10.0'
+        }
+        // Explicitly provide a version for Lombok (not provided by the Spring Boot BOM)
+        dependencies {
+            dependency 'org.projectlombok:lombok:1.18.24'
+        }
+    }
+}
+
+subprojects {
+    test {
+        useJUnitPlatform()
+    }
+}

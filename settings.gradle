@@ -1,0 +1,3 @@
+// springboot-microservices/settings.gradle
+rootProject.name = 'springboot-microservices'
+include 'inventory-service', 'order-service', 'product-service'

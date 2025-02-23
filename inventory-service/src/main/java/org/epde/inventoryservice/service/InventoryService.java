@@ -1,5 +1,9 @@
 package org.epde.inventoryservice.service;
 
+import org.epde.inventoryservice.dto.InventoryResponse;
+
+import java.util.List;
+
 public interface InventoryService {
-    boolean isInStock(String skuCode);
+    List<InventoryResponse> isInStock(List<String> skuCode);
 }

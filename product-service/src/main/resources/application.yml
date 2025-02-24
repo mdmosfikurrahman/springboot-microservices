@@ -6,7 +6,7 @@ spring:
       uri: mongodb+srv://mosfik:on1odnUunIcSgZid@cluster-alpha.dbd5m.mongodb.net/product-service
 
 server:
-  port: 8080
+  port: 0
 
 eureka:
   client:
